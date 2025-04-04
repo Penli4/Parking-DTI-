@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome</title>
+    <style>
+        body {
+            margin: 0;
+            background-image: url("{{ url_for('static', filename='background.png') }}");
+            background-size: cover;
+            font-family: Arial Rounded MT Bold, sans-serif;
+        }
+        .center-btn {
+            position: absolute;
+            top: 460px;
+            left: 970px;
+            transform: translate(-50%, -50%);
+        }
+        button {
+            font-size: 25px;
+            padding: 20px 60px;
+            background-color: #0000FF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="center-btn">
+        <form action="{{ url_for('login') }}">
+            <button type="submit">Start Now</button>
+        </form>
+    </div>
+</body>
+</html>

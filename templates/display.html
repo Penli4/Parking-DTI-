@@ -1,0 +1,29 @@
+<!-- templates/display.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Parking Lot Status</title>
+    <style>
+        body {
+            background-color: #fafafa;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 30px;
+        }
+        h1 {
+            color: #333;
+        }
+        img {
+            margin-top: 20px;
+            border: 5px solid #000;
+            max-width: 90%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Parking Lot Status</h1>
+    <img src="{{ url_for('static', filename='result.jpg') }}" alt="Parking Result">
+</body>
+</html>
