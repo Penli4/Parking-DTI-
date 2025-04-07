@@ -1,11 +1,10 @@
-from flask import Flask, render_template, request, redirect, url_for, session, send_file
-from detect_parking import process_parking_image
+from flask import Flask, render_template, request, redirect, url_for, session, Response
+from detect_parking import generate_frames
 
 app = Flask(__name__)
 app.secret_key = 'secret-key'
 
 users = {"Diya": "123456"}
-parking_data_path = 'Parking'
 
 @app.route('/')
 def frontpage():
@@ -36,7 +35,13 @@ def signup():
 
 @app.route('/dashboard')
 def dashboard():
-    process_parking_image()
+    if 'user' not in session:
+        return redirect(url_for('login'))
     return render_template('display.html')
+
+@app.route('/video_feed')
+def video_feed():
+    return Response(generate_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
+
 if __name__ == '__main__':
     app.run(debug=True)
